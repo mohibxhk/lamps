@@ -131,4 +131,87 @@ export default function Home() {
       </section>
 
       <section className="border-t border-line bg-stone" data-testid="home-products">
-        <div className="mx-auto max-w
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <Reveal>
+              <Overline>{t.home.products_overline}</Overline>
+              <h2 className="mt-4 font-serif text-3xl font-light tracking-tight text-ink sm:text-4xl">{t.home.products_title}</h2>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <Link to="/products" data-testid="home-products-link" className="border-b border-ink pb-1 font-mono text-[11px] uppercase tracking-[0.25em] text-ink">
+                {t.home.products_link}
+              </Link>
+            </Reveal>
+          </div>
+          <div className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+            {featured.map((p, i) => (
+              <Reveal key={p.slug} delay={0.08 * i} className={i % 2 === 1 ? "lg:mt-16" : ""}>
+                <ProductCard product={p} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section ref={philRef} className="bg-night text-paper" data-testid="home-philosophy">
+        <div className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16 lg:py-36">
+          <div className="grid gap-12 lg:grid-cols-12">
+            <Reveal className="lg:col-span-5">
+              <Overline dark>{t.home.phil_overline}</Overline>
+              <h2 className="mt-6 font-serif text-4xl font-light leading-[1.1] tracking-tight sm:text-5xl">
+                {t.home.phil_title}
+              </h2>
+              <p className="mt-8 max-w-md text-base font-light leading-relaxed text-[#a3a39a]">
+                {t.home.phil_body}
+              </p>
+            </Reveal>
+            <motion.div style={{ y: philY }} className="lg:col-span-6 lg:col-start-7">
+              <ImageSlot src={ASSETS.home.philosophyLandscape} ratio="landscape" dark alt="Architectural light" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16 lg:py-32" data-testid="home-projects">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <Reveal>
+            <Overline>{t.home.projects_overline}</Overline>
+            <h2 className="mt-4 font-serif text-3xl font-light tracking-tight text-ink sm:text-4xl">{t.home.projects_title}</h2>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <Link to="/projects" data-testid="home-projects-link" className="border-b border-ink pb-1 font-mono text-[11px] uppercase tracking-[0.25em] text-ink">
+              {t.home.projects_link}
+            </Link>
+          </Reveal>
+        </div>
+        <div className="mt-16 space-y-20">
+          {projects.map((p, i) => (
+            <Reveal key={p.slug}>
+              <ProjectCard project={p} flip={i % 2 === 1} />
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <Marquee dark />
+
+      <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16 lg:py-36" data-testid="home-cta">
+        <Reveal className="mx-auto max-w-3xl text-center">
+          <Overline>{t.home.cta_overline}</Overline>
+          <h2 className="mt-6 font-serif text-4xl font-light leading-[1.1] tracking-tight text-ink sm:text-5xl">
+            {t.home.cta_title}
+          </h2>
+          <p className="mx-auto mt-6 max-w-xl text-base font-light leading-relaxed text-mute">{t.home.cta_body}</p>
+          <Link
+            to="/contact"
+            data-testid="home-cta-button"
+            className="group relative mt-10 inline-block overflow-hidden bg-night px-10 py-4 font-mono text-[11px] uppercase tracking-[0.25em] text-paper"
+          >
+            <span className="relative z-10">{t.home.cta_button}</span>
+            <span className="absolute inset-0 -translate-x-full bg-ink transition-transform duration-500 group-hover:translate-x-0" aria-hidden="true" />
+          </Link>
+        </Reveal>
+      </section>
+    </main>
+  );
+}
