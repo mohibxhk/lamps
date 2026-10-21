@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
@@ -6,6 +6,7 @@ import { LanguageProvider } from "./i18n/LanguageContext";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
 import { ChatWidget } from "./components/ChatWidget";
+import { Preloader } from "./components/Preloader";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import ProductDetail from "./pages/ProductDetail";
@@ -35,8 +36,11 @@ function useLenis() {
 
 function Shell() {
   useLenis();
+  const [loading, setLoading] = useState(true);
+
   return (
     <div className="min-h-screen bg-paper text-ink">
+      {loading && <Preloader onComplete={() => setLoading(false)} />}
       <ScrollManager />
       <Header />
       <Routes>
