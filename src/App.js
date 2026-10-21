@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import Lenis from "lenis";
+import { LanguageProvider } from "@/i18n/LanguageContext";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ChatWidget } from "@/components/ChatWidget";
@@ -59,7 +60,9 @@ function Shell() {
 function App() {
   return (
     <HashRouter>
-      <Shell />
+      <LanguageProvider>
+        <Shell />
+      </LanguageProvider>
     </HashRouter>
   );
 }
