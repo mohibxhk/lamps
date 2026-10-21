@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useLanguage } from "../i18n/LanguageContext";
-import { SITE, ASSETS } from "../config/site";
+import { SITE } from "../config/site";
 import { EASE } from "./Reveal";
 
 const LINKS = [
@@ -61,7 +61,7 @@ export function Header() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 sm:px-10 lg:px-16">
           <Link to="/" data-testid="brand-wordmark" className="flex items-center" aria-label="Gianni Gabutti — Home">
             <img
-              src={ASSETS.logo.light}
+              src="/logo-light.png"
               alt={SITE.name}
               data-testid="brand-logo"
               className="h-10 w-auto transition-opacity duration-300 hover:opacity-80 sm:h-12"
@@ -103,7 +103,7 @@ export function Header() {
             transition={{ duration: 0.4, ease: EASE }}
           >
             <div className="flex items-center justify-between px-6 py-4">
-              <img src={ASSETS.logo.dark} alt={SITE.name} className="h-9 w-auto" />
+              <img src="/logo-light.png" alt={SITE.name} className="h-9 w-auto" />
               <button data-testid="mobile-menu-close" onClick={() => setOpen(false)} aria-label={t.nav.close} className="text-paper">
                 <X size={22} strokeWidth={1.5} />
               </button>
