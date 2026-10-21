@@ -86,7 +86,7 @@ function Hero() {
 }
 
 export default function Home() {
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const [featured, setFeatured] = useState([]);
   const [projects, setProjects] = useState([]);
   const philRef = useRef(null);
@@ -131,16 +131,4 @@ export default function Home() {
       </section>
 
       <section className="border-t border-line bg-stone" data-testid="home-products">
-        <div className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <Reveal>
-              <Overline>{t.home.products_overline}</Overline>
-              <h2 className="mt-4 font-serif text-3xl font-light tracking-tight text-ink sm:text-4xl">{t.home.products_title}</h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <Link to="/products" data-testid="home-products-link" className="border-b border-ink pb-1 font-mono text-[11px] uppercase tracking-[0.25em] text-ink">
-                {t.home.products_link}
-              </Link>
-            </Reveal>
-          </div>
-          <div className="mt-1
+        <div className="mx-auto max-w
