@@ -20,11 +20,23 @@ function Hero() {
 
   return (
     <section ref={ref} data-testid="hero-section" className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-night">
-      {/* Background Video Wrapper with Optimized Framing & Hardware Acceleration */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* Container with ambient glow background to fill widescreen perfectly without quality loss */}
+      <div className="absolute inset-0 flex items-center justify-end overflow-hidden bg-[#0d0d0c]">
+        {/* Subtle blur backdrop of video to fill side gaps gracefully on wide monitors */}
+        <video
+          className="absolute inset-0 h-full w-full object-cover opacity-30 blur-2xl scale-110 pointer-events-none"
+          src="/hero.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
+
+        {/* Crisp Main Video with right alignment and pixel-perfect framing */}
         <video
           data-testid="hero-video"
-          className="h-full w-full object-cover object-center scale-[1.02] transform-gpu transition-all duration-700 ease-out sm:object-cover"
+          className="relative z-0 h-full w-auto max-w-none object-contain object-right sm:object-right md:right-0 lg:right-12 xl:right-24 transform-gpu"
           src="/hero.mp4"
           autoPlay
           muted
@@ -33,12 +45,13 @@ function Hero() {
           preload="auto"
           style={{
             WebkitTransform: "translateZ(0)",
-            backfaceVisibility: "hidden",
-            imageRendering: "crisp-edges"
+            backfaceVisibility: "hidden"
           }}
         />
-        {/* Subtle cinematic overlay to keep text readable without ruining video clarity */}
-        <div className="absolute inset-0 bg-gradient-to-t from-night/95 via-night/40 to-night/30 pointer-events-none" aria-hidden="true" />
+
+        {/* Elegant overlay gradient to ensure hero text is super sharp and readable */}
+        <div className="absolute inset-0 bg-gradient-to-r from-night via-night/80 to-transparent z-1" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-night/40 z-1" aria-hidden="true" />
       </div>
 
       <motion.div style={{ y, opacity }} className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-24 sm:px-10 lg:px-16">
