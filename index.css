@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --background: 60 9% 97%;
+    --foreground: 60 2% 6%;
+    --border: 60 6% 89%;
+    --input: 60 6% 89%;
+    --ring: 60 2% 9%;
+    --radius: 0rem;
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+    margin: 0;
+    background-color: #F8F8F6;
+    color: #111110;
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Apple-style display headlines: tight tracking, calm weight */
+.font-serif {
+    letter-spacing: -0.02em;
+    font-feature-settings: "kern" 1;
+}
+
+::selection { background: #111110; color: #F8F8F6; }
+
+*:focus-visible {
+    outline: 1.5px solid #111110;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+.placeholder-crosshair {
+    background-image:
+        linear-gradient(to bottom right, transparent calc(50% - 0.5px), rgba(102,102,96,0.25) calc(50% - 0.5px), rgba(102,102,96,0.25) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+        linear-gradient(to top right, transparent calc(50% - 0.5px), rgba(102,102,96,0.25) calc(50% - 0.5px), rgba(102,102,96,0.25) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+}
+
+.placeholder-shimmer {
+    position: relative;
+    overflow: hidden;
+}
+.placeholder-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.55) 50%, transparent 70%);
+    transition: transform 1.2s ease;
+}
+.placeholder-shimmer:hover::after { transform: translateX(100%); }
+
+[data-debug-wrapper="true"] { display: contents !important; }
