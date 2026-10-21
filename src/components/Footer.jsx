@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "../i18n/LanguageContext";
-import { SITE, ASSETS } from "../config/site";
+import { SITE } from "../config/site";
 import { LangSwitch } from "./Header";
 
 export function Footer() {
@@ -18,7 +18,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <img src={ASSETS.logo.dark} alt={SITE.name} data-testid="footer-logo" className="h-14 w-auto sm:h-16" />
+            <img src="/logo-dark.png" alt={SITE.name} data-testid="footer-logo" className="h-14 w-auto sm:h-16" />
             <p className="mt-5 font-mono text-[10px] uppercase tracking-[0.4em] text-[#6a6a62]">{SITE.subline}</p>
             <p className="mt-8 max-w-sm font-sans text-sm font-light leading-relaxed text-[#a3a39a]">
               {t.footer.tagline}
