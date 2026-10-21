@@ -20,18 +20,25 @@ function Hero() {
 
   return (
     <section ref={ref} data-testid="hero-section" className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-night">
-      <div className="absolute inset-0">
+      {/* Background Video Wrapper with Optimized Framing & Hardware Acceleration */}
+      <div className="absolute inset-0 overflow-hidden">
         <video
           data-testid="hero-video"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-center scale-[1.02] transform-gpu transition-all duration-700 ease-out sm:object-cover"
           src="/hero.mp4"
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
+          style={{
+            WebkitTransform: "translateZ(0)",
+            backfaceVisibility: "hidden",
+            imageRendering: "crisp-edges"
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-night/90 via-night/30 to-night/40" aria-hidden="true" />
+        {/* Subtle cinematic overlay to keep text readable without ruining video clarity */}
+        <div className="absolute inset-0 bg-gradient-to-t from-night/95 via-night/40 to-night/30 pointer-events-none" aria-hidden="true" />
       </div>
 
       <motion.div style={{ y, opacity }} className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-24 sm:px-10 lg:px-16">
