@@ -20,23 +20,11 @@ function Hero() {
 
   return (
     <section ref={ref} data-testid="hero-section" className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-night">
-      {/* Container with ambient glow background to fill widescreen perfectly without quality loss */}
-      <div className="absolute inset-0 flex items-center justify-end overflow-hidden bg-[#0d0d0c]">
-        {/* Subtle blur backdrop of video to fill side gaps gracefully on wide monitors */}
-        <video
-          className="absolute inset-0 h-full w-full object-cover opacity-30 blur-2xl scale-110 pointer-events-none"
-          src="/hero.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-        />
-
-        {/* Crisp Main Video with right alignment and pixel-perfect framing */}
+      {/* Absolute Full Screen Background Video Wrapper */}
+      <div className="absolute inset-0 z-0 h-full w-full overflow-hidden bg-night">
         <video
           data-testid="hero-video"
-          className="relative z-0 h-full w-auto max-w-none object-contain object-right sm:object-right md:right-0 lg:right-12 xl:right-24 transform-gpu"
+          className="absolute inset-0 h-full w-full object-cover object-[75%_35%] transform-gpu"
           src="/hero.mp4"
           autoPlay
           muted
@@ -45,16 +33,16 @@ function Hero() {
           preload="auto"
           style={{
             WebkitTransform: "translateZ(0)",
-            backfaceVisibility: "hidden"
+            backfaceVisibility: "hidden",
+            filter: "contrast(1.05) brightness(0.95)"
           }}
         />
-
-        {/* Elegant overlay gradient to ensure hero text is super sharp and readable */}
-        <div className="absolute inset-0 bg-gradient-to-r from-night via-night/80 to-transparent z-1" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-night/40 z-1" aria-hidden="true" />
+        {/* Dual Overlay: Left Overlay for Text Legibility + Bottom Fade for Seamless Blend */}
+        <div className="absolute inset-0 bg-gradient-to-r from-night via-night/75 to-transparent z-10" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-night/40 z-10" aria-hidden="true" />
       </div>
 
-      <motion.div style={{ y, opacity }} className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-24 sm:px-10 lg:px-16">
+      <motion.div style={{ y, opacity }} className="relative z-20 mx-auto w-full max-w-7xl px-6 pb-24 sm:px-10 lg:px-16">
         <motion.p
           initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 1 }}
           className="mb-6 font-mono text-[11px] uppercase tracking-[0.35em] text-[#a3a39a]"
@@ -96,7 +84,7 @@ function Hero() {
 
       <motion.div
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4, duration: 1 }}
-        className="absolute bottom-8 right-6 z-10 hidden items-center gap-3 sm:flex lg:right-16"
+        className="absolute bottom-8 right-6 z-20 hidden items-center gap-3 sm:flex lg:right-16"
       >
         <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#8a8a82]">{t.common.scroll}</span>
         <ArrowDown size={14} className="animate-bounce text-[#8a8a82]" strokeWidth={1.5} />
@@ -173,7 +161,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section ref={philRef} className="bg-night text-paper" data-testid="home-philosophy">
+      <section ref={philRef} className="bg-night text-[#F8F8F6]" data-testid="home-philosophy">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16 lg:py-36">
           <div className="grid gap-12 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">
