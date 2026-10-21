@@ -20,11 +20,11 @@ function Hero() {
 
   return (
     <section ref={ref} data-testid="hero-section" className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-night">
-      {/* Absolute Full Screen Background Video Wrapper */}
+      {/* Absolute Full Screen Background Video Container */}
       <div className="absolute inset-0 z-0 h-full w-full overflow-hidden bg-night">
         <video
           data-testid="hero-video"
-          className="absolute inset-0 h-full w-full object-cover object-[75%_35%] transform-gpu"
+          className="absolute inset-0 h-full w-full object-cover object-center transform-gpu"
           src="/hero.mp4"
           autoPlay
           muted
@@ -33,13 +33,12 @@ function Hero() {
           preload="auto"
           style={{
             WebkitTransform: "translateZ(0)",
-            backfaceVisibility: "hidden",
-            filter: "contrast(1.05) brightness(0.95)"
+            backfaceVisibility: "hidden"
           }}
         />
-        {/* Dual Overlay: Left Overlay for Text Legibility + Bottom Fade for Seamless Blend */}
-        <div className="absolute inset-0 bg-gradient-to-r from-night via-night/75 to-transparent z-10" aria-hidden="true" />
-        <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-night/40 z-10" aria-hidden="true" />
+        {/* Soft Left Overlay for High Text Readability + Bottom Dark Blend */}
+        <div className="absolute inset-0 bg-gradient-to-r from-night/85 via-night/50 to-transparent z-10" aria-hidden="true" />
+        <div className="absolute inset-0 bg-gradient-to-t from-night via-transparent to-night/30 z-10" aria-hidden="true" />
       </div>
 
       <motion.div style={{ y, opacity }} className="relative z-20 mx-auto w-full max-w-7xl px-6 pb-24 sm:px-10 lg:px-16">
@@ -161,7 +160,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section ref={philRef} className="bg-night text-[#F8F8F6]" data-testid="home-philosophy">
+      <section ref={philRef} className="bg-night text-paper" data-testid="home-philosophy">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16 lg:py-36">
           <div className="grid gap-12 lg:grid-cols-12">
             <Reveal className="lg:col-span-5">
